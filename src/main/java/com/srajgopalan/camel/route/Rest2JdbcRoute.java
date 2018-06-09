@@ -1,5 +1,6 @@
 package com.srajgopalan.camel.route;
 
+import com.srajgopalan.camel.exception.SimpleExceptionhandlerProcessor;
 import com.srajgopalan.camel.process.SimpleJDBCInsertProcessor;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
@@ -7,6 +8,11 @@ import org.apache.camel.builder.RouteBuilder;
 public class Rest2JdbcRoute extends RouteBuilder {
 
     public void configure() throws Exception {
+
+        onException(Exception.class).handled(true)
+                .log("Exception Encountered while inserting messages to DB")
+                .process(new SimpleExceptionhandlerProcessor() );
+
         from("timer:timerInput?period=10s")
                 .to("log:?level=INFO&showHeaders=true&showBody=true")
                 .setHeader(Exchange.HTTP_METHOD, constant("GET"))

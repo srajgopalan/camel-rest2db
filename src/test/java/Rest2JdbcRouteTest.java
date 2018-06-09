@@ -53,4 +53,14 @@ public class Rest2JdbcRouteTest extends CamelTestSupport {
         assertNotEquals(0,responseList.size());
 
     }
+
+    @Test
+    public void checkRest2JdbcException(){
+
+        // Exception will be thrown back to the caller timer class so we will get some output here
+        ArrayList responseList  = consumer.receiveBody("timer:timerInput",ArrayList.class);
+
+        assertNull(responseList);
+
+    }
 }
