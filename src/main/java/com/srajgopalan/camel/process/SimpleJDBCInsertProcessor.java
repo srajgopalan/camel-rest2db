@@ -21,7 +21,7 @@ public class SimpleJDBCInsertProcessor implements org.apache.camel.Processor {
 
         String capital = (String) jsonObject.get("capital");
 
-        String insertQuery = "INSERT INTO country_capital1 values ( ".concat("'").concat(name).concat("'").concat(",").concat("'").concat(capital).concat("'").concat(" )");
+        String insertQuery = "INSERT INTO country_capital values ( ".concat("'").concat(name).concat("'").concat(",").concat("'").concat(capital).concat("'").concat(" )");
         System.out.println("Insert Query is : " + insertQuery);
         exchange.getIn().setBody(insertQuery);
     }
