@@ -2,13 +2,9 @@ package com.srajgopalan.camel.route;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.http.common.cookie.CookieHandler;
-import org.apache.camel.http.common.cookie.InstanceCookieHandler;
 
 public class RestGetRoute extends RouteBuilder {
     public void configure() throws Exception {
-
-        CookieHandler cookieHandler = new InstanceCookieHandler();
 
         from("direct:restInput")
                 .to("log:?level=INFO&showBody=true")
