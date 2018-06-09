@@ -22,8 +22,8 @@ public class Rest2JdbcRoute extends RouteBuilder {
                 .process(new SimpleJDBCInsertProcessor())
                 .to("jdbc:myDataSource")
                 .to("sql:select * from country_capital?dataSource=myDataSource")
-                .to("log:?level=INFO&showBody=true")
-                .to("direct:dbOutput"); // this is so that we can etract the output of the SQL statement to test against. Will be commented when running as a standalone app
+                .to("log:?level=INFO&showBody=true");
+                //.to("direct:dbOutput"); // this is so that we can etract the output of the SQL statement to test against. Will be commented when running as a standalone app
 
 
     }
