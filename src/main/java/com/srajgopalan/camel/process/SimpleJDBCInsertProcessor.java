@@ -6,11 +6,8 @@ import org.json.simple.parser.JSONParser;
 
 public class SimpleJDBCInsertProcessor implements org.apache.camel.Processor {
 
-    private  static int count = 0;
 
     public void process(Exchange exchange) throws Exception {
-
-        count ++;
 
         String input = (String) exchange.getIn().getBody();
         System.out.println("Input to be persisted : " + input);
